@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camden Cultural Preservation Society</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #c4a77d;
+            --divider: #333333;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            display: block;
+        }
+
+        nav {
+            text-align: right;
+        }
+
+        nav a {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            justify-content: flex-end;
+        }
+
+        .social-links a {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+
+        /* Release Section */
+        .release {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .release:last-of-type {
+            border-bottom: none;
+        }
+
+        .release-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .release-subtitle {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-left: 12px;
+            font-weight: 400;
+        }
+
+        .purchase-links {
+            margin-bottom: 24px;
+        }
+
+        .purchase-link {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .purchase-link::before {
+            content: "↗";
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+
+        .bandcamp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .bandcamp-link::before {
+            content: "↗";
+            opacity: 0.6;
+        }
+
+        .bandcamp-icon {
+            width: 16px;
+            height: 16px;
+            background: var(--text-secondary);
+            clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+        }
+
+        /* Embedded Player */
+        .player-embed {
+            margin: 32px 0;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .player-embed img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .player-embed iframe {
+            width: 100%;
+            height: 120px;
+            border: none;
+        }
+
+        /* Track Listing */
+        .track-listing {
+            margin: 24px 0;
+        }
+
+        .track-listing-header {
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .track-number {
+            color: var(--text-muted);
+            margin-right: 12px;
+            min-width: 24px;
+        }
+
+        .track-title {
+            flex: 1;
+        }
+
+        .track-duration {
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Release Info */
+        .release-info {
+            margin-top: 32px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .release-info p {
+            margin-bottom: 16px;
+        }
+
+        .release-info strong {
+            display: block;
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Shows Section */
+        .shows-section {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .no-shows {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        /* Mailing List Section */
+        .mailing-section {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .mailing-description {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 24px;
+            max-width: 400px;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--divider);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-input:focus {
+            border-color: var(--text-muted);
+        }
+
+        .email-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .submit-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--text-secondary);
+            color: var(--bg-primary);
+        }
+
+        /* About Section */
+        .about-section {
+            margin-bottom: 80px;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 11px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header {
+                padding: 24px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav a {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            main {
+                padding: 0 24px 60px;
+            }
+
+            .release-title,
+            .section-title {
+                font-size: 26px;
+            }
+
+            .release {
+                margin-bottom: 60px;
+                padding-bottom: 60px;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <span>Camden Cultural</span>
+            <span>Preservation Society</span>
+        </a>
+        <nav>
+            <a href="#store">Store</a>
+            <a href="#shows">Shows</a>
+            <a href="#mailing">Mailing List</a>
+            <a href="#about">About</a>
+            <div class="social-links">
+                <a href="https://camdenculturalpreservationsociety.bandcamp.com" title="Bandcamp">◤</a>
+                <a href="#" title="Spotify">●</a>
+                <a href="#" title="Instagram">◻</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Store / Releases -->
+        <section id="store" class="release">
+            <h1 class="release-title">Misery Tourist<span class="release-subtitle">EP</span></h1>
+            
+            <div class="purchase-links">
+                <a href="#" class="purchase-link">DIGITAL 44.1kHz 16bit .wav $7</a>
+                <a href="https://camdenculturalpreservationsociety.bandcamp.com" class="bandcamp-link">
+                    <span class="bandcamp-icon"></span>bandcamp
+                </a>
+            </div>
+
+            <div class="player-embed">
+                <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=3142457172/size=small/bgcol=0d0d0d/linkcol=c4a77d/transparent=true/" seamless><a href="https://camdenculturalpreservationsociety.bandcamp.com/album/misery-tourist">Misery Tourist by Camden Cultural Preservation Society</a></iframe>
+            </div>
+
+            <div class="track-listing">
+                <div class="track-listing-header">Track Listing</div>
+                <div class="track">
+                    <span class="track-number">01.</span>
+                    <span class="track-title">Grief Merchants</span>
+                    <span class="track-duration">04:42</span>
+                </div>
+                <div class="track">
+                    <span class="track-number">02.</span>
+                    <span class="track-title">Misery Tourist</span>
+                    <span class="track-duration">04:04</span>
+                </div>
+                <div class="track">
+                    <span class="track-number">03.</span>
+                    <span class="track-title">The Economics of Conflict Imagery</span>
+                    <span class="track-duration">04:40</span>
+                </div>
+            </div>
+
+            <div class="release-info">
+                <p>
+                    <strong>About</strong>
+                    Recorded at home in the inner west between May and November 2024.
+                </p>
+                <p>
+                    <strong>Credits</strong>
+                    released August 10, 2025<br><br>
+                    Composed and mixed by Liam Bray and Tim Causbrook.<br>
+                    Cover Photo by Liam Bray.<br><br>
+                    (P)+(C) 2025 Camden Cultural Preservation Society
+                </p>
+            </div>
+        </section>
+
+        <!-- Shows -->
+        <section id="shows" class="shows-section">
+            <h2 class="section-title">Shows</h2>
+            <p class="no-shows">No upcoming performances.</p>
+        </section>
+
+        <!-- Mailing List -->
+        <section id="mailing" class="mailing-section">
+            <h2 class="section-title">Mailing List</h2>
+            <p class="mailing-description">
+                Join our mailing list to receive notifications about upcoming shows and releases.
+            </p>
+            <form 
+                class="email-form"
+                action="https://buttondown.email/api/emails/embed-subscribe/camdenculturalpreservationsociety"
+                method="post"
+                target="popupwindow"
+            >
+                <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-btn">Subscribe</button>
+            </form>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">About</h2>
+            <p class="about-text">
+                Camden Cultural Preservation Society is a Sydney-based ambient drone collective founded by long-time collaborators Liam Bray and Tim Causbrook, formerly of post-rock outfit Panzer Queen and the electronic project Saint Helier.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Camden Cultural Preservation Society
+    </footer>
+
+    <!-- Cloudflare Web Analytics -->
+    <!-- Replace YOUR_TOKEN_HERE with your actual Cloudflare Analytics token -->
+    <!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> -->
+</body>
+</html>
