@@ -1,0 +1,6 @@
+# robots.txt for camdenculturalpreservationsociety.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://camdenculturalpreservationsociety.com/sitemap.xml

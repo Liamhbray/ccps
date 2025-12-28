@@ -24,6 +24,9 @@
     <meta name="twitter:description" content="Sydney-based ambient drone collective. Listen to Misery Tourist EP.">
     <meta name="twitter:image" content="https://camdenculturalpreservationsociety.com/misery-tourist-artwork.jpg">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://camdenculturalpreservationsociety.com/">
+
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="/ccps-icon.jpg">
     <link rel="apple-touch-icon" href="/ccps-icon.jpg">
@@ -31,6 +34,84 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Camden Cultural Preservation Society",
+        "description": "Sydney-based ambient drone collective founded by Liam Bray and Tim Causbrook.",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Sydney, Australia"
+        },
+        "genre": ["Ambient", "Drone", "Experimental"],
+        "member": [
+            {
+                "@type": "Person",
+                "name": "Liam Bray"
+            },
+            {
+                "@type": "Person",
+                "name": "Tim Causbrook"
+            }
+        ],
+        "url": "https://camdenculturalpreservationsociety.com",
+        "sameAs": [
+            "https://camdenculturalpreservationsociety.bandcamp.com"
+        ],
+        "album": {
+            "@type": "MusicAlbum",
+            "name": "Misery Tourist",
+            "albumProductionType": "https://schema.org/StudioAlbum",
+            "albumReleaseType": "https://schema.org/EPRelease",
+            "datePublished": "2025-08-10",
+            "image": "https://camdenculturalpreservationsociety.com/misery-tourist-artwork.jpg",
+            "byArtist": {
+                "@type": "MusicGroup",
+                "name": "Camden Cultural Preservation Society"
+            },
+            "track": {
+                "@type": "ItemList",
+                "numberOfItems": 3,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "MusicRecording",
+                            "name": "Grief Merchants",
+                            "duration": "PT4M42S",
+                            "url": "https://camdenculturalpreservationsociety.bandcamp.com/track/grief-merchants"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "MusicRecording",
+                            "name": "Misery Tourist",
+                            "duration": "PT4M4S",
+                            "url": "https://camdenculturalpreservationsociety.bandcamp.com/track/misery-tourist"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "MusicRecording",
+                            "name": "The Economics of Conflict Imagery",
+                            "duration": "PT4M40S",
+                            "url": "https://camdenculturalpreservationsociety.bandcamp.com/track/the-economics-of-conflict-imagery"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -342,6 +423,8 @@
         /* About Section */
         .about-section {
             margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--divider);
         }
 
         .about-text {
@@ -349,6 +432,29 @@
             font-size: 14px;
             line-height: 1.8;
             max-width: 500px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-bottom: 80px;
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .contact-email {
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--divider);
+            padding-bottom: 2px;
+            transition: border-color 0.2s ease;
+        }
+
+        .contact-email:hover {
+            border-color: var(--text-primary);
+            opacity: 1;
         }
 
         /* Footer */
@@ -409,6 +515,7 @@
             <a href="#shows">Shows</a>
             <a href="#mailing">Mailing List</a>
             <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -419,8 +526,8 @@
             
             <div class="purchase-links">
                 <a href="https://camdenculturalpreservationsociety.bandcamp.com/album/misery-tourist" class="purchase-link">Download available in 24-bit/48kHz.</a>
-                <a href="https://camdenculturalpreservationsociety.bandcamp.com" class="bandcamp-link">
-                    <span class="bandcamp-icon"></span>bandcamp
+                <a href="https://camdenculturalpreservationsociety.bandcamp.com" class="bandcamp-link" aria-label="Listen on Bandcamp">
+                    <span class="bandcamp-icon" aria-hidden="true"></span>bandcamp
                 </a>
             </div>
 
@@ -489,7 +596,16 @@
         <section id="about" class="about-section">
             <h2 class="section-title">About</h2>
             <p class="about-text">
-                Camden Cultural Preservation Society is a Sydney-based ambient drone collective founded by long-time collaborators Liam Bray and Tim Causbrook, formerly of post-rock outfit <a href="https://open.spotify.com/artist/6x3FsalMbSSvR2UZ8cpgw7">Panzer Queen</a> and the electronic project <a href="https://soundcloud.com/saint-helier">Saint Helier</a>.
+                Camden Cultural Preservation Society is a Sydney-based ambient drone collective founded by long-time collaborators Liam Bray and Tim Causbrook, formerly of post-rock outfit <a href="https://open.spotify.com/artist/6x3FsalMbSSvR2UZ8cpgw7" rel="noopener">Panzer Queen</a> and the electronic project <a href="https://soundcloud.com/saint-helier" rel="noopener">Saint Helier</a>.
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact-text">
+                For bookings, press enquiries, or general correspondence:<br>
+                <a href="mailto:hello@camdenculturalpreservationsociety.com" class="contact-email">hello@camdenculturalpreservationsociety.com</a>
             </p>
         </section>
     </main>

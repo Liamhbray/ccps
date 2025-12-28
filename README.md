@@ -12,5 +12,12 @@ Website for Sydney-based ambient drone collective.
 
 ## Files
 
-- `index.html` — Main website
-- `CNAME` — Custom domain configuration
+```
+├── index.html              # Main website
+├── CNAME                   # Custom domain configuration
+├── robots.txt              # Search engine directives
+├── sitemap.xml             # Sitemap for SEO
+├── llms.txt                # Context for AI assistants
+├── ccps-icon.jpg           # Favicon
+└── misery-tourist-artwork.jpg  # Social share image
+```
